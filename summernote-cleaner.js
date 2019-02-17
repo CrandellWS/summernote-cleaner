@@ -17,6 +17,14 @@
         limitText: 'Text',
         limitHTML: 'HTML'
       }
+    },
+    'ru-RU': {
+      cleaner: {
+        tooltip: 'Cleaner',
+        not: 'Text has been Cleaned!!!',
+        limitText: 'Text',
+        limitHTML: 'HTML'
+        }
     }
   });
   $.extend($.summernote.options, {
