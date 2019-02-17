@@ -167,8 +167,12 @@
             var ffox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
             if (msie)
               var text = window.clipboardData.getData("Text");
-            else
-              var text = e.originalEvent.clipboardData.getData(options.cleaner.keepHtml ? 'text/html' : 'text/plain');
+            else {
+                if (options.cleaner.keepHtml && e.originalEvent.clipboardData.types[1] == 'text/html')
+                    var text = e.originalEvent.clipboardData.getData('text/html');
+                else
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+            }
             if (text) {
               if (msie || ffox)
                 setTimeout($note.summernote('pasteHTML', cleanText(text, options.cleaner.newline)), 1);
