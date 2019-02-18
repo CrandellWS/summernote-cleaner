@@ -20,9 +20,9 @@
     },
     'ru-RU': {
       cleaner: {
-        tooltip: 'Cleaner',
-        not: 'Text has been Cleaned!!!',
-        limitText: 'Text',
+        tooltip: 'Очистка HTML',
+        not: 'Текст был очищен!!!',
+        limitText: 'Текст',
         limitHTML: 'HTML'
         }
     }
