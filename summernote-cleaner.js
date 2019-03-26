@@ -17,6 +17,14 @@
         limitText: 'Text',
         limitHTML: 'HTML'
       }
+    },
+    'ru-RU': {
+      cleaner: {
+        tooltip: 'Очистка HTML',
+        not: 'Текст был очищен!!!',
+        limitText: 'Текст',
+        limitHTML: 'HTML'
+        }
     }
   });
   $.extend($.summernote.options, {
@@ -159,8 +167,12 @@
             var ffox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
             if (msie)
               var text = window.clipboardData.getData("Text");
-            else
-              var text = e.originalEvent.clipboardData.getData(options.cleaner.keepHtml ? 'Text' : 'text/plain');
+            else {
+                if (options.cleaner.keepHtml && e.originalEvent.clipboardData.types[1] == 'text/html')
+                    var text = e.originalEvent.clipboardData.getData('text/html');
+                else
+                    var text = e.originalEvent.clipboardData.getData('text/plain');
+            }
             if (text) {
               if (msie || ffox)
                 setTimeout($note.summernote('pasteHTML', cleanText(text, options.cleaner.newline)), 1);
